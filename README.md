@@ -1,2 +1,2 @@
 ＃ChanJierant.github.io
-#今天造了个博客。
+新建博客。
