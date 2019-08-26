@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>yum使用官方源 | ChanJierant&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、国内镜像源地址：1.http://mirrors.163.com/2.https://opsx.alibaba.com/mirror">
+<meta name="keywords" content="linux,运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yum使用官方源">
+<meta property="og:url" content="https://chanjierant.github.io/undefined/linux/2019-08-16-2.yum使用官方源.html">
+<meta property="og:site_name" content="ChanJierant&#39;s Blog">
+<meta property="og:description" content="一、国内镜像源地址：1.http://mirrors.163.com/2.https://opsx.alibaba.com/mirror">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-26T12:55:19.414Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="yum使用官方源">
+<meta name="twitter:description" content="一、国内镜像源地址：1.http://mirrors.163.com/2.https://opsx.alibaba.com/mirror">
+  
+  
+    <link rel="icon" href="/img/dududu.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="/img/headportrait.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">ChanJierant</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories">分类</a></li>
+				        
+							<li><a href="/archives">归档</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/chanjierant" title="github">github</a>
+					        
+								<a class="douban" target="_blank" href="https://www.douban.com/people/187031849/" title="douban">douban</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.voidking.com">VoidKing</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.jianshu.com/u/9f179465dd2b">简书</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://segmentfault.com/blog/voidking">SegmentFault</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/voidking">博客园</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.csdn.net/c0416">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.iots.vip">Alliot&#39;s Blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">ChanJierant</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/headportrait.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">ChanJierant</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories">分类</a></li>
+		        
+					<li><a href="/archives">归档</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/chanjierant" title="github">github</a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/187031849/" title="douban">douban</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2.yum使用官方源" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/undefined/linux/2019-08-16-2.yum使用官方源.html" class="article-date">
+  	<time datetime="2019-08-16T12:55:00.000Z" itemprop="datePublished">2019-08-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      yum使用官方源
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/运维/">运维</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/linux/">linux</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">	
+      
+	  
+		
+		
+        <p>一、国内镜像源地址：<br>1.<a href="http://mirrors.163.com/" target="_blank" rel="noopener">http://mirrors.163.com/</a><br>2.<a href="https://opsx.alibaba.com/mirror" target="_blank" rel="noopener">https://opsx.alibaba.com/mirror</a></p>
+<a id="more"></a>
+<p>二、类别：<br>——————————————————————–系统基础源————————————————————–</p>
+<ol>
+<li>默认（国外源）：Base/Extrax/Updates<br>[root@XXOO yum.repos.d]# ll<br>total 28</li>
+</ol>
+<p>-rw-r–r–. 1 root root 1664 Aug 30  2017 CentOS-Base.repo<br>-rw-r–r–. 1 root root 1309 Aug 30  2017 CentOS-CR.repo<br>-rw-r–r–. 1 root root  649 Aug 30  2017 CentOS-Debuginfo.repo<br>-rw-r–r–. 1 root root  314 Aug 30  2017 CentOS-fasttrack.repo<br>-rw-r–r–. 1 root root  630 Aug 30  2017 CentOS-Media.repo<br>-rw-r–r–. 1 root root 1331 Aug 30  2017 CentOS-Sources.repo<br>-rw-r–r–. 1 root root 3830 Aug 30  2017 CentOS-Vault.repo</p>
+<p>[root@XXOO yum.repos.d]# yum repolist<br>Loaded plugins: fastestmirror, langpacks<br>Loading mirror speeds from cached hostfile</p>
+<ul>
+<li>base: mirrors.cqu.edu.cn</li>
+<li>extras: mirrors.cqu.edu.cn</li>
+<li>updates: mirrors.cqu.edu.cn<br>repo id             repo name             status<br>base/7/x86_64       CentOS-7 - Base       10,019<br>extras/7/x86_64     CentOS-7 - Extras     435<br>updates/7/x86_64    CentOS-7 - Updates    2,500<br>repolist: 12,954</li>
+</ul>
+<ol start="2">
+<li>aliyun:<br>(1)、备份<br>[root@XXOO ~]# mkdir /etc/yum.repos.d/backup<br>[root@XXOO ~]# ls /etc/yum.repos.d/<br>backup            CentOS-CR.repo         CentOS-fasttrack.repo  CentOS-Sources.repo<br>CentOS-Base.repo  CentOS-Debuginfo.repo  CentOS-Media.repo      CentOS-Vault.repo<br>[root@XXOO ~]# mv /etc/yum.repos.d/{*.repo,backup}<br>[root@XXOO ~]# ls /etc/yum.repos.d/<br>backup<br>[root@XXOO ~]# ls /etc/yum.repos.d/backup/<br>CentOS-Base.repo  CentOS-Debuginfo.repo  CentOS-Media.repo    CentOS-Vault.repo<br>CentOS-CR.repo    CentOS-fasttrack.repo  CentOS-Sources.repo<br>(2)、下载新的CentOS-Base.repo 到/etc/yum.repos.d/<br>wget -O /etc/yum.repos.d/CentOS-Base.repo <a href="http://mirrors.aliyun.com/repo/s-7.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/s-7.repo</a></li>
+</ol>
+<p>[root@XXOO yum.repos.d]# yum clean all<br>Loaded plugins: fastestmirror, langpacks<br>Cleaning repos: base extras updates<br>Cleaning up list of fastest mirrors<br>Other repos take up 162 M of disk space (use –verbose for details)<br>[root@XXOO yum.repos.d]# yum makecache<br>Loaded plugins: fastestmirror, langpacks<br>Determining fastest mirrors</p>
+<ul>
+<li>base: mirrors.aliyun.com</li>
+<li>extras: mirrors.aliyun.com</li>
+<li>updates: mirrors.aliyun.com<br>base                                                                  | 3.6 kB  00:00:00<br>extras                                                                | 3.4 kB  00:00:00<br>updates                                                               | 3.4 kB  00:00:00<br>(1/12): base/7/x86_64/group_gz                                        | 166 kB  00:00:00<br>(2/12): base/7/x86_64/filelists_db                                    | 7.1 MB  00:00:07<br>(3/12): base/7/x86_64/primary_db                                      | 6.0 MB  00:00:06<br>(4/12): extras/7/x86_64/prestodelta                                   |  73 kB  00:00:00<br>(5/12): extras/7/x86_64/filelists_db                                  | 249 kB  00:00:00<br>(6/12): extras/7/x86_64/primary_db                                    | 215 kB  00:00:00<br>(7/12): extras/7/x86_64/other_db                                      | 131 kB  00:00:00<br>(8/12): base/7/x86_64/other_db                                        | 2.6 MB  00:00:02<br>(9/12): updates/7/x86_64/prestodelta                                  | 945 kB  00:00:02<br>(10/12): updates/7/x86_64/filelists_db                                | 5.2 MB  00:00:07<br>(11/12): updates/7/x86_64/other_db                                    | 764 kB  00:00:00<br>(12/12): updates/7/x86_64/primary_db                                  | 7.4 MB  00:00:06<br>Metadata Cache Created</li>
+</ul>
+<p>[root@XXOO yum.repos.d]# yum repolist<br>Loaded plugins: fastestmirror, langpacks<br>Loading mirror speeds from cached hostfile</p>
+<ul>
+<li>base: mirrors.aliyun.com</li>
+<li>extras: mirrors.aliyun.com</li>
+<li>updates: mirrors.aliyun.com<br>repo id                                   repo name                                                       status<br>base/7/x86_64                             CentOS-7 - Base - mirrors.aliyun.com                            10,019<br>extras/7/x86_64                           CentOS-7 - Extras - mirrors.aliyun.com                          435<br>updates/7/x86_64                          CentOS-7 - Updates - mirrors.aliyun.com                         2,500<br>repolist: 12,954</li>
+</ul>
+<ol start="3">
+<li><p>163:<br>(1)、首先备份/etc/yum.repos.d/CentOS-Base.repo<br>[root@XXOO yum.repos.d]# mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup<br>(2)、下载对应版本repo文件, 放入/etc/yum.repos.d/(操作前请做好相应备份)<br>[root@XXOO yum.repos.d]# wget -O /etc/yum.repos.d/CentOS-Base.repo <a href="http://mirrors.163.com/.help/CentOS7-Base-163.repo" target="_blank" rel="noopener">http://mirrors.163.com/.help/CentOS7-Base-163.repo</a></p>
+</li>
+<li><p>EPEL:<br>[root@XXOO yum.repos.d]# yum install epel-release(国外源)<br>或者</p>
+</li>
+</ol>
+<p>备份(如有配置其他epel源)<br>[root@XXOO yum.repos.d]# mkdir /etc/yum.repo/backup<br>[root@XXOO yum.repos.d]# mv /etc/yum.repos.d/{epel*.repo,backup}<br>[root@XXOO yum.repos.d]# wget -O /etc/yum.repos.d/epel.repo <a href="http://mirrors.aliyun.com/repo/epel-7.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/epel-7.repo</a><br>[root@XXOO yum.repos.d]# yum repolist<br>Loaded plugins: fastestmirror, langpacks<br>Loading mirror speeds from cached hostfile</p>
+<ul>
+<li>base: mirrors.aliyun.com</li>
+<li>epel: mirror01.idc.hinet.net</li>
+<li>extras: mirrors.aliyun.com</li>
+<li>updates: mirrors.aliyun.com<br>repo id                     repo name                                                status<br>base/7/x86_64               CentOS-7 - Base - mirrors.aliyun.com                     10,019<br>epel/x86_64                 Extra Packages for Enterprise Linux 7 - x86_64           13,341<br>extras/7/x86_64             CentOS-7 - Extras - mirrors.aliyun.com                   435<br>updates/7/x86_64            CentOS-7 - Updates - mirrors.aliyun.com                  2,500<br>repolist: 26,295<br>—————————————————————软件官方源—————————————————————–<ol start="5">
+<li>其它源配置：<br>（1）Nginx:<br>[root@XXOO yum.repos.d]# sudo yum install yum-utils<br>[root@XXOO yum.repos.d]# vim /etc/yum.repos.d/nginx.repo<br>[nginx-stable]<br>name=nginx stable repo<br>baseurl=<a href="http://nginx.org/packages/centos/$releasever/$basearch/" target="_blank" rel="noopener">http://nginx.org/packages/centos/$releasever/$basearch/</a><br>gpgcheck=1<br>enabled=1<br>gpgkey=<a href="https://nginx.org/keys/nginx_signing.key" target="_blank" rel="noopener">https://nginx.org/keys/nginx_signing.key</a></li>
+</ol>
+</li>
+</ul>
+<p>[nginx-mainline]<br>name=nginx mainline repo<br>baseurl=<a href="http://nginx.org/packages/mainline/centos/$releasever/$basearch/" target="_blank" rel="noopener">http://nginx.org/packages/mainline/centos/$releasever/$basearch/</a><br>gpgcheck=1<br>enabled=0<br>gpgkey=<a href="https://nginx.org/keys/nginx_signing.key" target="_blank" rel="noopener">https://nginx.org/keys/nginx_signing.key</a></p>
+<p>[root@XXOO yum.repos.d]# yum repolist<br>Loaded plugins: fastestmirror, langpacks<br>Loading mirror speeds from cached hostfile</p>
+<ul>
+<li>base: mirrors.aliyun.com</li>
+<li>epel: mirror01.idc.hinet.net</li>
+<li>extras: mirrors.aliyun.com</li>
+<li>updates: mirrors.aliyun.com<br>repo id                      repo name                                          status<br>base/7/x86_64                CentOS-7 - Base - mirrors.aliyun.com               10,019<br>epel/x86_64                  Extra Packages for Enterprise Linux 7 - x86_64     13,341<br>extras/7/x86_64              CentOS-7 - Extras - mirrors.aliyun.com             435<br>nginx-stable/7/x86_64        nginx stable repo                                  152<br>updates/7/x86_64             CentOS-7 - Updates - mirrors.aliyun.com            2,500<br>repolist: 26,447</li>
+</ul>
+<p>(2)mysql:<br>[root@XXOO yum.repos.d]# yum install -y <a href="https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm" target="_blank" rel="noopener">https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm</a><br>[root@XXOO yum.repos.d]# yum repolist<br>Loaded plugins: fastestmirror, langpacks<br>Loading mirror speeds from cached hostfile</p>
+<ul>
+<li>base: mirrors.aliyun.com</li>
+<li>epel: mirror01.idc.hinet.net</li>
+<li>extras: mirrors.aliyun.com</li>
+<li>updates: mirrors.aliyun.com<br>mysql-connectors-community                                      | 2.5 kB  00:00:00<br>mysql-tools-community                                           | 2.5 kB  00:00:00<br>mysql80-community                                               | 2.5 kB  00:00:00<br>(1/3): mysql-connectors-community/x86_64/primary_db             |  44 kB  00:00:00<br>(2/3): mysql-tools-community/x86_64/primary_db                  |  61 kB  00:00:00<br>(3/3): mysql80-community/x86_64/primary_db                      |  79 kB  00:00:00<br>repo id                                   repo name                                              status<br>base/7/x86_64                             CentOS-7 - Base - mirrors.aliyun.com                   10,019<br>epel/x86_64                               Extra Packages for Enterprise Linux 7 - x86_64         13,341<br>extras/7/x86_64                           CentOS-7 - Extras - mirrors.aliyun.com                 435<br>mysql-connectors-community/x86_64         MySQL Connectors Community                             118<br>mysql-tools-community/x86_64              MySQL Tools Community                                  95<br>mysql80-community/x86_64                  MySQL 8.0 Community Server                             129<br>nginx-stable/7/x86_64                     nginx stable repo                                      152<br>updates/7/x86_64                          CentOS-7 - Updates - mirrors.aliyun.com                2,500<br>repolist: 26,789</li>
+</ul>
+<p>(3)openstack:<br>[root@XXOO yum.repos.d]# yum install centos-release-openstack-rocky<br>[root@XXOO yum.repos.d]# yum install <a href="https://rdoproject.org/repos/rdo-release.rpm" target="_blank" rel="noopener">https://rdoproject.org/repos/rdo-release.rpm</a><br>[root@XXOO yum.repos.d]# yum list |grep openstack</p>
+<ul>
+<li>openstack-stein: mirrors.aliyun.com<br>centos-release-openstack-rocky.noarch   1-1.el7.centos           @extras<br>PyQt4.x86_64                            4.12-1.el7               openstack-stein<br>PyQt4-devel.x86_64                      4.12-1.el7               centos-openstack-rocky<br>PyQt4-doc.noarch                        4.12-1.el7               centos-openstack-rocky<br>PyQt4-qsci-api.x86_64                   4.12-1.el7               centos-openstack-rocky<br>XStatic-Angular-common.noarch           1:1.5.8.0-1.el7          centos-openstack-rocky<br>Xaw3d.x86_64                            1.6.2-4.el7              centos-openstack-rocky<br>Xaw3d-devel.x86_64                      1.6.2-4.el7              centos-openstack-rocky<br>ansible-openstack-modules.noarch        0-20140902git79d751a.el7 epel<br>ansible-pacemaker.noarch                1.0.3-1.el7              centos-openstack-rocky<br>ansible-role-atos-hsm.noarch            0.1.0-1.el7              openstack-stein<br>ansible-role-chrony.noarch              0.0.1-0.1.068668bgit.el7 openstack-stein<br>ansible-role-container-registry.noarch  1.0.1-0.1.d6a749agit.el7 openstack-stein<pre><code>0.11.0-1.el7             openstack-stein</code></pre>ansible-role-openstack-ml2.noarch       1.0.6-1.el7              centos-openstack-rocky<br>ansible-role-openstack-operations.noarch<pre><code>0.0.1-0.1.09e0e81git.el7 openstack-stein</code></pre>ansible-role-redhat-subscription.noarch 1.0.2-1.el7              openstack-stein<br>ansible-role-thales-hsm.noarch          0.2.0-1.el7              openstack-stein<pre><code>1.0.1-0.1.012209agit.el7 openstack-stein</code></pre>ansible-tripleo-ipsec.noarch            9.1.0-1.el7              openstack-stein<pre><code>openstack-stein
+openstack-stein</code></pre>babel.noarch                            2.6.0-4.el7              openstack-stein<br>babel-doc.noarch                        2.6.0-4.el7              openstack-stein</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/undefined/linux/2019-08-16-1.软件包管理.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          软件包管理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/undefined/uncategorized/2019-07-29-今天终于把博客搞定了.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">今天终于把博客搞定了</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<div class="social-share"></div>
+
+	<!--  css & js -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+</div>
+
+
+
+
+
+<div class="livere">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zODU3Mi8xNTEwMA==">
+        <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+
+           if (typeof LivereTower === 'function') { return; }
+
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+        </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2019 ChanJierant
+    	</div>
+      	<div class="footer-right">
+      		<p>
+            <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten    
+            </p>
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!--百度统计的代码-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b759ac2a7fa45129e3ef060bf68259f0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+  </div>
+</body>
+</html>
